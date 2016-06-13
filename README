@@ -1,0 +1,46 @@
+# -*- mode: org -*-
+
+* Description
+
+This is a library for Chez Scheme providing the portable hygienic
+pattern matcher by Alex Shinn [[http://synthcode.com/]].
+
+Note: the catch all symbol '_' has been replaced by ':_' because R6RS
+doesn't allow its use as an auxiliary keyword in syntax-case.
+
+* Build
+
+To build the libraries run "make".  By default it looks for a
+Chez Scheme binary called "chez-scheme".  If the name of your binary
+is different, you can specify it as follows (for all targets):
+
+make CHEZ=my-chez-scheme-bin
+
+To test the build run
+
+make test
+
+Running the tests requires SRFI-78.
+
+* Install
+
+By default "make install" will install the libraries under the prefix
+"/usr/local".  You can specify a different installation prefix
+directory as follows:
+
+make install PREFIX=/my-prefix/path
+
+This will install all compiled libraries (*.so files) to
+$PREFIX/lib/csvX.Y-site, where X.Y is Chez's version.  If in addition
+you want to install the source files, use the 'install-src' target.
+They are installed in the same directory as the .so files.
+
+* Use
+
+Make sure that Chez Scheme can find the libraries by specifying their
+location on the command line (with the appropriate flag), or by
+setting the environment variable CHEZSCHEMELIBDIRS.
+
+Import using 
+
+(import (matchable))
